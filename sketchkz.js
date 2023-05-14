@@ -2,9 +2,9 @@ let faceapi;
 let detections = [];
 let video;
 let canvas;
-const arrN = [];
-const arrP = [];
-let array = [];
+let sec;
+let array = [10];
+let arraySec=[10];
 
 function setup() {
 	canvas = createCanvas(480,360);
@@ -57,6 +57,8 @@ function drawBoxes(detections){
 }
 
 function printScreen(){
+  array=[];
+  arraySec=[];
   window.print();
 }
 
@@ -70,9 +72,8 @@ function showNameAndProcent(_x,_y,detections,f){
     
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
     
-    console.log(emo[0]);
     
-    //sendNameAndProcent(emo[0],emo[1], detections,f);
+    sendNameAndProcent(emo[0],emo[1], detections,f);
 }
 
 function sendNameAndProcent(name,procent, detections,f){
@@ -81,19 +82,32 @@ function sendNameAndProcent(name,procent, detections,f){
         if(procent>95)
         {
           var today = new Date();
-          today.getSeconds();
-          array.unshift(name);
-          console.log(array);
-        }
+          sec = today.getSeconds();
+          presentArr(name,sec);
+          }     
   }
   else{
     return;
   }
 }
 
-function recogn(name,procentt)
-{
-  console.log(">");
+function presentArr (name,sec) {
+  if(array.length < 10){
+      array.push(true);
+      arraySec.push(sec);
+  }
+  else
+  { 
+    var s = arraySec[9] - arraySec[0];
+	console.log(s);
+    if(s<3 || s>-57){
+      printScreen();
+    }
+	else if(s>3){
+		array=[];
+		arraySec=[];
+	}
+  }
 }
 
 function findNameandProcent(){
