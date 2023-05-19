@@ -17,7 +17,7 @@ function setup() {
 		withLandMarks:true,
 		withExpressions:true,
 		withDescriptors:false,
-		minConfidence:0.5	  
+		minConfidence:0.5
 	};
 	faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
@@ -65,14 +65,37 @@ function printScreen(){
 
 
 function showNameAndProcent(_x,_y,detections,f){
-    stroke(255, 255, 255);
-    textFont('Arial');
+    emo = findNameandProcent(detections[f]);      
     textSize(14);
-    emo = findNameandProcent(detections[f]);
-    
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    
-    
+    textFont('Arial');
+    if(emo[0]=='злость'){
+      stroke(255, 0, 0);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='грустный'){
+      stroke(255,160,122);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='нейтральный'){
+      stroke(255, 255, 0);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='счастье'){
+      stroke(0, 255, 0);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='отвращение'){
+      stroke(0, 150, 255); 
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='удивлен'){
+      stroke(169, 92, 104);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
+    else if(emo[0]=='страх'){
+      stroke(222, 49, 99);
+      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    }
     sendNameAndProcent(emo[0],emo[1], detections,f);
 }
 
@@ -93,7 +116,7 @@ function sendNameAndProcent(name,procent, detections,f){
 }
 
 function presentArr(name,sec) {
-  if(array.length < 10){
+  if(array.length < 11){
       array.push(true);
       arraySec.push(sec);
   }
@@ -102,7 +125,8 @@ function presentArr(name,sec) {
     var s = arraySec[9] - arraySec[0];
 	console.log(s);
     if(s<3 || s>-57){
-      printScreen();
+      
+      //printScreen();
     }
 	else if(s>3){
 		array=[];

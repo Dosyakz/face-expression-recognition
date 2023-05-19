@@ -17,8 +17,8 @@ function setup() {
 		withLandMarks:true,
 		withExpressions:true,
 		withDescriptors:false,
-		minConfidence:0.5	  
-	};
+		minConfidence:0.5
+  };
 	faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
 
@@ -92,7 +92,7 @@ function sendNameAndProcent(name,procent, detections,f){
 }
 
 function presentArr (name,sec) {
-  if(array.length < 10){
+  if(array.length < 11){
       array.push(true);
       arraySec.push(sec);
   }
