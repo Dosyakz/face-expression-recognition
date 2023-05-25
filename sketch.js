@@ -57,6 +57,12 @@ function drawBoxes(detections){
 }
 
 function printScreen(){
+  var currentdate = new Date(); 
+  var datetime =    
+                  currentdate.getHours() + "-"  
+                + currentdate.getMinutes() + "-" 
+                + currentdate.getSeconds();
+  document.title=datetime;
   array=[];
   arraySec=[];
   window.print();
@@ -126,7 +132,7 @@ function presentArr(name,sec) {
 	console.log(s);
     if(s<3 || s>-57){
       
-      //printScreen();
+      printScreen();
     }
 	else if(s>3){
 		array=[];

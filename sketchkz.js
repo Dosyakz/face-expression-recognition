@@ -57,6 +57,12 @@ function drawBoxes(detections){
 }
 
 function printScreen(){
+  var currentdate = new Date(); 
+  var datetime =    
+                  currentdate.getHours() + "-"  
+                + currentdate.getMinutes() + "-" 
+                + currentdate.getSeconds();
+  document.title=datetime;
   array=[];
   arraySec=[];
   window.print();
@@ -65,13 +71,37 @@ function printScreen(){
 
 
 function showNameAndProcent(_x,_y,detections,f){
-    stroke(255, 255, 255);
-    textFont('Arial');
-    textSize(14);
-    emo = findNameandProcent(detections[f]);
-    
+  emo = findNameandProcent(detections[f]);      
+  textSize(14);
+  textFont('Arial');
+  if(emo[0]=='ашу'){
+    stroke(255, 0, 0);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    
+  }
+  else if(emo[0]=='қайғылы'){
+    stroke(255,160,122);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='бейтарап'){
+    stroke(255, 255, 0);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='бақыт'){
+    stroke(0, 255, 0);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='жиіркеніш'){
+    stroke(0, 150, 255); 
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='таң қалу'){
+    stroke(169, 92, 104);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='қорқыныш'){
+    stroke(222, 49, 99);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
     
     sendNameAndProcent(emo[0],emo[1], detections,f);
 }
