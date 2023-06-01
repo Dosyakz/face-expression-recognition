@@ -56,20 +56,6 @@ function drawBoxes(detections){
 
 }
 
-function printScreen(){
-  var currentdate = new Date(); 
-  var datetime =    
-                  currentdate.getHours() + "-"  
-                + currentdate.getMinutes() + "-" 
-                + currentdate.getSeconds();
-  document.title=datetime;
-  array=[];
-  arraySec=[];
-  window.print();
-}
-
-
-
 function showNameAndProcent(_x,_y,detections,f){
   emo = findNameandProcent(detections[f]);      
   textSize(14);
@@ -139,6 +125,25 @@ function presentArr (name,sec) {
 	}
   }
 }
+
+
+function printScreen(){
+  var currentdate = new Date(); 
+  var datetime =    
+                  currentdate.getHours() + "-"  
+                + currentdate.getMinutes() + "-" 
+                + currentdate.getSeconds();
+  document.title=datetime;
+  array=[];
+  arraySec=[];
+  window.print();
+}
+
+
+
+
+
+
 
 function findNameandProcent(){
   let {neutral, happy, angry, sad, disgusted, surprised, fearful} = detections[f].expressions;

@@ -56,53 +56,39 @@ function drawBoxes(detections){
 
 }
 
-function printScreen(){
-  var currentdate = new Date(); 
-  var datetime =    
-                  currentdate.getHours() + "-"  
-                + currentdate.getMinutes() + "-" 
-                + currentdate.getSeconds();
-  document.title=datetime;
-  array=[];
-  arraySec=[];
-  window.print();
-}
-
-
-
 function showNameAndProcent(_x,_y,detections,f){
-    emo = findNameandProcent(detections[f]);      
-    textSize(14);
-    textFont('Arial');
-    if(emo[0]=='злость'){
-      stroke(255, 0, 0);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='грустный'){
-      stroke(255,160,122);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='нейтральный'){
-      stroke(255, 255, 0);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='счастье'){
-      stroke(0, 255, 0);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='отвращение'){
-      stroke(0, 150, 255); 
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='удивлен'){
-      stroke(169, 92, 104);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    else if(emo[0]=='страх'){
-      stroke(222, 49, 99);
-      text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-    }
-    sendNameAndProcent(emo[0],emo[1], detections,f);
+  emo = findNameandProcent(detections[f]);      
+  textSize(14);
+  textFont('Arial');
+  if(emo[0]=='злость'){
+    stroke(255, 0, 0);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='грустный'){
+    stroke(255,160,122);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='нейтральный'){
+    stroke(255, 255, 0);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='счастье'){
+    stroke(0, 255, 0);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='отвращение'){
+    stroke(0, 150, 255); 
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='удивлен'){
+    stroke(169, 92, 104);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  else if(emo[0]=='страх'){
+    stroke(222, 49, 99);
+    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+  }
+  sendNameAndProcent(emo[0],emo[1], detections,f);
 }
 
 function sendNameAndProcent(name,procent, detections,f){
@@ -141,6 +127,18 @@ function presentArr(name,sec) {
   }
 }
 
+function printScreen(){
+  var currentdate = new Date(); 
+  var datetime =    
+                  currentdate.getHours() + "-"  
+                + currentdate.getMinutes() + "-" 
+                + currentdate.getSeconds();
+  document.title=datetime;
+  array=[];
+  arraySec=[];
+  window.print();
+}
+
 function findNameandProcent(){
   let {neutral, happy, angry, sad, disgusted, surprised, fearful} = detections[f].expressions;
   const arr = [];
@@ -153,32 +151,5 @@ function findNameandProcent(){
 }
 
 
-function drawExpressions(detections, x, y, textYSpace){
-  if(detections.length > 0){
-	let {neutral, happy, angry, sad, disgusted, surprised, fearful} = detections[0].expressions;
-    textFont('Helvetica Neue');
-    textSize(12);
-    noStroke();
-    fill(44, 169, 225);
-	
-	text("бейтарап: " + nf(neutral*100, 2, 2)+"%", x, y);
-    text("бақыт:    " + nf(happy*100, 2, 2)+"%", x, y+textYSpace);
-    text("ашу:      " + nf(angry*100, 2, 2)+"%", x, y+textYSpace*2);
-    text("қайғылы:  "+ nf(sad*100, 2, 2)+"%", x, y+textYSpace*3);
-    text("жиіркеніш: " + nf(disgusted*100, 2, 2)+"%", x, y+textYSpace*4);
-    text("таң қалу:  " + nf(surprised*100, 2, 2)+"%", x, y+textYSpace*5);
-    text("қорқыныш:  " + nf(fearful*100, 2, 2)+"%", x, y+textYSpace*6);
-    //screenShot(angry,sad,disgusted,fearful);
-  }else{//If no faces is detected:
-    text("бейтарап: ", x, y);
-    text("бақыт: ", x, y + textYSpace);
-    text("ашу: ", x, y + textYSpace*2);
-    text("қайғылы: ", x, y + textYSpace*3);
-    text("жиіркеніш: ", x, y + textYSpace*4);
-    text("таң қалу: ", x, y + textYSpace*5);
-    text("қорқыныш: ", x, y + textYSpace*6);
-  }
-
-}
 
 
