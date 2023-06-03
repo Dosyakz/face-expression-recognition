@@ -94,7 +94,7 @@ function showNameAndProcent(_x,_y,detections,f){
 
 function sendNameAndProcent(name,procent, detections,f){
   procent = nf(procent*100,2,2);
-  if(name=='ашу' || name=='қайғылы'){
+  if(name=='ашу' || name=='қайғылы' ||  name=='қорқыныш'){
         if(procent>95)
         {
           var today = new Date();
@@ -106,9 +106,10 @@ function sendNameAndProcent(name,procent, detections,f){
     return;
   }
 }
+// if 50 element of array contains is it screen after 5 sec?
 
 function presentArr (name,sec) {
-  if(array.length < 11){
+  if(array.length < 50){
       array.push(true);
       arraySec.push(sec);
   }
