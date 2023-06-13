@@ -17,11 +17,17 @@ function getVal(){
 function sadd(ssad){
     check_number(ssad);
     if(ssad.length==0){
-        console.log('this is an empty number');
         ssad = 95;
+        return ssad;
     }
     else{
-        console.log("send data to sketch");
+        if(ssad>100){
+           ssad=95;
+           return ssad; 
+        }
+        else{
+            return ssad;
+        }
     }
 }
 

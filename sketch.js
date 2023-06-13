@@ -93,7 +93,7 @@ function showNameAndProcent(_x,_y,detections,f){
 
 function sendNameAndProcent(name,procent, detections,f){
   procent = nf(procent*100,2,2);
-  if(name=='злость' || name=='грустный'){
+  if(name=='злость' || name=='грустный' || name=='страх' || name=='отвращение'){
     if(procent>95)
     {
 	  var today = new Date();
@@ -107,23 +107,19 @@ function sendNameAndProcent(name,procent, detections,f){
   }
 }
 
-function presentArr(name,sec) {
-  if(array.length < 11){
+function presentArr (name,sec) {
+  if(array.length < 50){
       array.push(true);
       arraySec.push(sec);
   }
   else
   { 
-    var s = arraySec[9] - arraySec[0];
-	console.log(s);
-    if(s<3 || s>-57){
-      
+      var s = arraySec[49] - arraySec[0];
       printScreen();
-    }
-	else if(s>3){
-		array=[];
-		arraySec=[];
-	}
+	    if(s>51){
+		    array=[];
+		    arraySec=[];
+  	  }
   }
 }
 

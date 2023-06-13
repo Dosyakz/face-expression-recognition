@@ -115,15 +115,12 @@ function presentArr (name,sec) {
   }
   else
   { 
-    var s = arraySec[9] - arraySec[0];
-	console.log(s);
-    if(s<3 || s>-57){
+      var s = arraySec[49] - arraySec[0];
       printScreen();
-    }
-	else if(s>3){
-		array=[];
-		arraySec=[];
-	}
+	    if(s>51){
+		    array=[];
+		    arraySec=[];
+  	  }
   }
 }
 
