@@ -7,10 +7,12 @@ if(isset($_POST["submit"])){
   $dis = $_POST["dis"];
   $sad = $_POST["sad"];
   $fear = $_POST["fear"];
-  }
+  
 
   $query = "INSERT INTO faceexp VALUES('$sec','$angry','$sad','$fear','$dis')";
   mysqli_query($conn,$query);
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -39,4 +41,4 @@ if(isset($_POST["submit"])){
       <button type="submit" name="submit">Submit</button>
     </form>
   </body>
-</html>
+</html> 
