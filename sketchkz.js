@@ -18,11 +18,6 @@ function setup() {
 		withExpressions:true,
 		withDescriptors:false,
 		minConfidence:0.5,
-    FaceExpressionModel:'http://localhost/dev/models/face_expression_model-weights_manifest.json',
-		Mobilenetv1Model: 'http://localhost/dev/models/ssd_mobilenetv1_model-weights_manifest.json',
-		FaceLandmarkModel: 'http://localhost/dev/models/face_landmark_68_model-weights_manifest.json',
-		FaceLandmark68TinyNet: 'http://localhost/dev/models/face_landmark_68_tiny_model-weights_manifest.json',
-		FaceRecognitionModel: 'http://localhost/dev/models/face_recognition_model-weights_manifest.json'
   };
 	faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
