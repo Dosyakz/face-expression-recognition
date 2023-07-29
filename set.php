@@ -40,7 +40,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<br> последний сохраненние: <br> - секунд: ". $row["sec"]. "<br> - злой: " . $row["angry"] ."%<br> - груст: " . $row["sad"] ."%<br> - отвращение: " . $row["dis"] . "%" . "<br>";
+        echo "<br> последний сохраненние: <br> - секунд: ". $row["sec"]. "<br> - злой: " . $row["angry"] ."%<br> - груст: " . $row["sad"] ."%<br> - отвращение: " . $row["dis"] . "%" ."%<br> - страшный: " . $row["fearful"] . "%" . "<br>";
     }
 } 
 $conn->close();
