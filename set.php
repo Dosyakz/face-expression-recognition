@@ -40,12 +40,9 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<br> последний сохраненние:  - секунд: ". $row["sec"]. " - злой " . $row["angry"] ." - груст " . $row["sad"] ." - отвращение " . $row["dis"] . "<br>";
+        echo "<br> последний сохраненние: <br> - секунд: ". $row["sec"]. "<br> - злой: " . $row["angry"] ."%<br> - груст: " . $row["sad"] ."%<br> - отвращение: " . $row["dis"] . "%" . "<br>";
     }
-} else {
-    echo "0 results";
-}
-
+} 
 $conn->close();
 
 
@@ -57,11 +54,11 @@ $conn->close();
     <meta charset="utf-8">
     <title>setting</title>
   </head>
-  <body style="display:flex;margin-top: 100px;">
+  <body style="display:flex;margin-top: 50px;margin-left: 500px;">
     <br>
     <br>
 
-    <form class="" action="" method="post" autocomplete="off" style="margin-top: 100px;">
+    <form class="" action="" method="post" autocomplete="off" style="margin-top: 150px;">
       <label for="">секунд</label>
       <input type="number" name="sec" value="">
       <br>
@@ -82,11 +79,16 @@ $conn->close();
       <input type="number" name="fear" value="">
       <br>
       <br>
-      <button type="submit" name="submit">Submit</button>
+      <button onclick="after()" type="submit" name="submit">Submit</button>
       <br>
       <br>
       <a href="main.html">Back</a>
     </form>
 
+<script type="text/javascript">
+  function after(){
+    alert("успешно изменен");
+  }
+</script>
   </body>
 </html> 
