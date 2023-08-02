@@ -24,6 +24,9 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
+
+
+?>
 <html>
 
 <head>
@@ -36,6 +39,9 @@ $conn->close();
   <meta charset="utf-8" />
 </head>
 <div id="data-sec" style="display: none;color:white;">
+  
+<body>
+  <div id="data-sec" style="display: none;color:white;">
     <?php
         echo $sec; // put as the div content
     ?>
@@ -64,18 +70,19 @@ $conn->close();
 </div>
 <body>
   <script type="text/javascript">
-    let faceapi;
+let faceapi;
 let detections = [];
 let video;
 let canvas;
 let sec;
-let array = [10];
-let arraySec=[10];
 const second = document.getElementById("data-sec").textContent;
 const pr_angry = document.getElementById("data-angry").textContent;
 const pr_sad = document.getElementById("data-sad").textContent;
 const pr_dis = document.getElementById("data-dis").textContent;
 const pr_fearful = document.getElementById("data-fearful").textContent;
+let arraySec=[second];
+pra=10*second; 
+let array = [pra];
 
 
 function setup() {
@@ -84,14 +91,13 @@ function setup() {
   video = createCapture(0);
   video.id('video');
   video.size(width,height);
-
-  const faceOptions = {
-    withLandMarks:true,
-    withExpressions:true,
-    withDescriptors:false,
-    minConfidence:0.5, 
-  };
-  faceapi = ml5.faceApi(video,faceOptions,faceReady);
+	const faceOptions = {
+		withLandMarks:true,
+		withExpressions:true,
+		withDescriptors:false,
+		minConfidence:0.5,
+    };
+    faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
 
 function faceReady(){
@@ -169,10 +175,10 @@ function sendNameAndProcent(name,procent, detections,f){
   if(name=='ашу' || name=='қайғылы' ||  name=='қорқыныш'){
         if(procent>pr_angry || procent>pr_sad || procent>pr_fearful)
         {
-          var today = new Date();
-          sec = today.getSeconds();
-          presentArr(name,sec);
-          }     
+                        var today = new Date();
+                        sec = today.getSeconds();
+                        presentArr(name,sec);
+        }   
   }
   else{
     return;
@@ -217,6 +223,49 @@ function findNameandProcent(){
   var procent = maxNum;
   return [names,procent,f];
 }
+
+
+function drawExpressions(detections, x, y, textYSpace){
+  if(detections.length > 0){
+  let {neutral, happy, angry, sad, disgusted, surprised, fearful} = detections[0].expressions;
+    textFont('Helvetica Neue');
+    textSize(12);
+    noStroke();
+    fill(44, 169, 225);
+  
+  text("бейтарап: " + nf(neutral*100, 2, 2)+"%", x, y);
+    text("бақыт:    " + nf(happy*100, 2, 2)+"%", x, y+textYSpace);
+    text("ашу:      " + nf(angry*100, 2, 2)+"%", x, y+textYSpace*2);
+    text("қайғылы:  "+ nf(sad*100, 2, 2)+"%", x, y+textYSpace*3);
+    text("жиіркеніш: " + nf(disgusted*100, 2, 2)+"%", x, y+textYSpace*4);
+    text("таң қалу:  " + nf(surprised*100, 2, 2)+"%", x, y+textYSpace*5);
+    text("қорқыныш:  " + nf(fearful*100, 2, 2)+"%", x, y+textYSpace*6);
+    //screenShot(angry,sad,disgusted,fearful);
+  }else{//If no faces is detected:
+    text("бейтарап: ", x, y);
+    text("бақыт: ", x, y + textYSpace);
+    text("ашу: ", x, y + textYSpace*2);
+    text("қайғылы: ", x, y + textYSpace*3);
+    text("жиіркеніш: ", x, y + textYSpace*4);
+    text("таң қалу: ", x, y + textYSpace*5);
+    text("қорқыныш: ", x, y + textYSpace*6);
+  }
+
+}
+
+
+
+function screenShot(angry,sad,disgusted,fearful)
+{
+  total_angry=angry*100;
+  total_disgusted=disgusted*100;
+  total_fearful=fearful*100;
+  if(total_disgusted >95 || total_angry>97){
+      window.print();
+  }
+  
+}
+  
   </script>
 </body>
 </html>
