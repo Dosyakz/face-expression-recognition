@@ -1,3 +1,5 @@
 # face-expression-recognition-kz
-there are two language option to choose.Languages are russian and kazakh.
-<img src="img/aa.jpg"> 
+Take the picture if someone walks around with furious or bad emotions in camera area.
+There are two languages option to choose.Languages are russian and kazakh.
+<br>
+<img src="C:/xampp/htdocs/fer/img/aa.jpg" alt="Alt text" title="Optional title"> 

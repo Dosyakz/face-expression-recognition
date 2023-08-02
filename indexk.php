@@ -194,8 +194,8 @@ function presentArr (name,sec) {
   else
   { 
       var s = arraySec[pro_second-1] - arraySec[0];
-      printScreen();
-      if(s>51){
+      if(s==second || s>-11){
+        printScreen();
         array=[];
         arraySec=[];
       }
