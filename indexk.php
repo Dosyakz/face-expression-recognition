@@ -175,9 +175,9 @@ function sendNameAndProcent(name,procent, detections,f){
   if(name=='ашу' || name=='қайғылы' ||  name=='қорқыныш'){
         if(procent>pr_angry || procent>pr_sad || procent>pr_fearful)
         {
-                        var today = new Date();
-                        sec = today.getSeconds();
-                        presentArr(name,sec);
+            var today = new Date();
+            sec = today.getSeconds();
+            presentArr(name,sec);
         }   
   }
   else{
@@ -186,13 +186,14 @@ function sendNameAndProcent(name,procent, detections,f){
 }
 
 function presentArr (name,sec) {
-  if(array.length < 50){
+  pro_second = second*10;
+  if(array.length < pro_second){
       array.push(true);
       arraySec.push(sec);
   }
   else
   { 
-      var s = arraySec[49] - arraySec[0];
+      var s = arraySec[pro_second-1] - arraySec[0];
       printScreen();
       if(s>51){
         array=[];
