@@ -1,2 +1,3 @@
 # face-expression-recognition-kz
-progam code on php and js and it's secret project about military ins
+there are two language option to choose.Languages are russian and kazakh.
+<img src="img/aa.jpg"> 
