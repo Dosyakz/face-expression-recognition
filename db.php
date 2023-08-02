@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname="emotion";
+$dbname="emo";
 
 $conn = mysqli_connect($servername,$username, $password,$dbname);
 
