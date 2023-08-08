@@ -91,12 +91,13 @@ function setup() {
 		withExpressions:true,
 		withDescriptors:false,
 		minConfidence:0.5,
-    FaceExpressionModel:'http://localhost/fer/models/face_expression_model-weights_manifest.json',
-    Mobilenetv1Model: 'http://localhost/fer/models/ssd_mobilenetv1_model-weights_manifest.json',
-    FaceLandmarkModel: 'http://localhost/fer/models/face_landmark_68_model-weights_manifest.json',
-    FaceLandmark68TinyNet: 'http://localhost/fer/models/face_landmark_68_tiny_model-weights_manifest.json',
-    FaceRecognitionModel: 'http://localhost/fer/models/face_recognition_model-weights_manifest.json'
+    FaceExpressionModel:'http://localhost/dev/models/face_expression_model-weights_manifest.json',
+    Mobilenetv1Model: 'http://localhost/dev/models/ssd_mobilenetv1_model-weights_manifest.json',
+    FaceLandmarkModel: 'http://localhost/dev/models/face_landmark_68_model-weights_manifest.json',
+    FaceLandmark68TinyNet: 'http://localhost/dev/models/face_landmark_68_tiny_model-weights_manifest.json',
+    FaceRecognitionModel: 'http://localhost/dev/models/face_recognition_model-weights_manifest.json'
  
+
     };
     faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
@@ -139,31 +140,31 @@ function showNameAndProcent(_x,_y,detections,f){
   emo = findNameandProcent(detections[f]);      
   textSize(14);
   textFont('Arial');
-  if(emo[0]=='ашу'){
+  if(emo[0]=='злость'){
     stroke(255, 0, 0);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='қайғылы'){
+  else if(emo[0]=='грустный'){
     stroke(255,160,122);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='бейтарап'){
+  else if(emo[0]=='нейтральный'){
     stroke(255, 255, 0);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='бақыт'){
+  else if(emo[0]=='счастье'){
     stroke(0, 255, 0);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='жиіркеніш'){
+  else if(emo[0]=='отвращение'){
     stroke(0, 150, 255); 
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='таң қалу'){
+  else if(emo[0]=='удивлен'){
     stroke(169, 92, 104);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
-  else if(emo[0]=='қорқыныш'){
+  else if(emo[0]=='страх'){
     stroke(222, 49, 99);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
@@ -173,7 +174,7 @@ function showNameAndProcent(_x,_y,detections,f){
 
 function sendNameAndProcent(name,procent, detections,f){
   procent = nf(procent*100,2,2);
-  if(name=='ашу' || name=='қайғылы' ||  name=='қорқыныш'){
+  if(name=='злость' || name=='грустный' || name=='страх' || name=='отвращение'){
         if(procent>pr_angry || procent>pr_sad || procent>pr_fearful)
         {
             var today = new Date();
@@ -221,7 +222,7 @@ function findNameandProcent(){
   arr.unshift(neutral,happy,angry, sad, disgusted, surprised, fearful);
   var maxNum = Math.max.apply(Math,arr);
   var index = arr.indexOf(maxNum);
-  var names = ['бейтарап', 'бақыт', 'ашу', 'қайғылы', 'жиіркеніш','таң қалу','қорқыныш'][index];
+  var names = ['нейтральный', 'счастье', 'злость', 'грустный', 'отвращение','удивлен','страх'][index];
   var procent = maxNum;
   return [names,procent,f];
 }
