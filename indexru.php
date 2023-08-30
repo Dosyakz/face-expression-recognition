@@ -91,13 +91,12 @@ function setup() {
 		withExpressions:true,
 		withDescriptors:false,
 		minConfidence:0.5,
-    FaceExpressionModel:'http://localhost/dev/models/face_expression_model-weights_manifest.json',
-    Mobilenetv1Model: 'http://localhost/dev/models/ssd_mobilenetv1_model-weights_manifest.json',
-    FaceLandmarkModel: 'http://localhost/dev/models/face_landmark_68_model-weights_manifest.json',
-    FaceLandmark68TinyNet: 'http://localhost/dev/models/face_landmark_68_tiny_model-weights_manifest.json',
-    FaceRecognitionModel: 'http://localhost/dev/models/face_recognition_model-weights_manifest.json'
+    FaceExpressionModel:'http://localhost/fer/models/face_expression_model-weights_manifest.json',
+    Mobilenetv1Model: 'http://localhost/fer/models/ssd_mobilenetv1_model-weights_manifest.json',
+    FaceLandmarkModel: 'http://localhost/fer/models/face_landmark_68_model-weights_manifest.json',
+    FaceLandmark68TinyNet: 'http://localhost/fer/models/face_landmark_68_tiny_model-weights_manifest.json',
+    FaceRecognitionModel: 'http://localhost/fer/models/face_recognition_model-weights_manifest.json'
  
-
     };
     faceapi = ml5.faceApi(video,faceOptions,faceReady);
 }
@@ -174,7 +173,7 @@ function showNameAndProcent(_x,_y,detections,f){
 
 function sendNameAndProcent(name,procent, detections,f){
   procent = nf(procent*100,2,2);
-  if(name=='злость' || name=='грустный' || name=='страх' || name=='отвращение'){
+  if(name=='злость' || name=='грустный' ||  name=='страх'){
         if(procent>pr_angry || procent>pr_sad || procent>pr_fearful)
         {
             var today = new Date();
