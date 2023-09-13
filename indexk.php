@@ -86,11 +86,11 @@ function setup() {
   video = createCapture(0);
   video.id('video');
   video.size(width,height);
-	const faceOptions = {
-		withLandMarks:true,
-		withExpressions:true,
-		withDescriptors:false,
-		minConfidence:0.5,
+  const faceOptions = {
+    withLandMarks:true,
+    withExpressions:true,
+    withDescriptors:false,
+    minConfidence:0.5,
     FaceExpressionModel:'http://localhost/fer/models/face_expression_model-weights_manifest.json',
     Mobilenetv1Model: 'http://localhost/fer/models/ssd_mobilenetv1_model-weights_manifest.json',
     FaceLandmarkModel: 'http://localhost/fer/models/face_landmark_68_model-weights_manifest.json',
@@ -148,20 +148,17 @@ function showNameAndProcent(_x,_y,detections,f){
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
   else if(emo[0]=='бейтарап'){
-    stroke(255, 255, 0);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    console.log("neutral")
   }
   else if(emo[0]=='бақыт'){
-    stroke(0, 255, 0);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    console.log("happy")
   }
   else if(emo[0]=='жиіркеніш'){
     stroke(0, 150, 255); 
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
   else if(emo[0]=='таң қалу'){
-    stroke(169, 92, 104);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
+    console.log("surprise")
   }
   else if(emo[0]=='қорқыныш'){
     stroke(222, 49, 99);
@@ -271,5 +268,3 @@ function screenShot(angry,sad,disgusted,fearful)
   </script>
 </body>
 </html>
-
-

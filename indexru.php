@@ -148,21 +148,15 @@ function showNameAndProcent(_x,_y,detections,f){
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
   else if(emo[0]=='нейтральный'){
-    stroke(255, 255, 0);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-  }
+    console.log("neutral")  }
   else if(emo[0]=='счастье'){
-    stroke(0, 255, 0);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-  }
+     console.log("happy")  }
   else if(emo[0]=='отвращение'){
     stroke(0, 150, 255); 
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
   }
   else if(emo[0]=='удивлен'){
-    stroke(169, 92, 104);
-    text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
-  }
+    console.log("surprise")  }
   else if(emo[0]=='страх'){
     stroke(222, 49, 99);
     text("#"+(f+1)+"   "+emo[0]+" : "+nf(emo[1]*100,2,2)+"%",_x,_y);
